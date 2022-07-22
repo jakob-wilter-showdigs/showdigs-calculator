@@ -145,7 +145,7 @@
 		var turnoverRate = Number($('#input-offload-percentage').val());
         var doorCount = Number($('#input-door-count').val());
         var showingsToRent = Number($('#input-showings-to-rent').val());
-        var touringTime = ;
+        var touringTime = touringCount * 30 / 60;
         var tourCount = doorCount * turnoverRate * showingsToRent;
         var daysReturned = ;
         var conditionReportCount = Number($('#input-condition-reports').val());
@@ -156,6 +156,8 @@
         
         
         var wageSavings = (((turnoverRate * doorCount) * (showings / 2) * (portfolioRange  * portfolioRadius * 2) * (commuteTime) / 60) + touringTime) * daysReturned * tourCount + ((conditionReportCount * 2 * portfolioRadius * portfolioRange * commuteTime) / 60) + conditionReportCount) * conditionOffload * 20;
+        
+        savings = (Math.round(wageSavings * 100) / 100).toFixed(2);
         
         return wageSavings;
        
@@ -237,7 +239,9 @@
     }
 
     function calculateTimeSavings() {
-
+		var timeInCar = calculateTotalTimeInCar();
+        var timeShowing = calculateTimeSpentTouring();
+        var showing
     }
 
     // calculate subcription cost
