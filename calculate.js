@@ -218,7 +218,9 @@
     }
 
     function calculateTimeSavings() {
-
+	var timeSavings;
+	    
+	    
     }
 
     // calculate subcription cost
