@@ -121,8 +121,11 @@
         var offloadPercent = Number($('#input-offload-percentage').val());
 
     	var irsReimbursement = .65;
+        
+        // Default
+        var savings = "--"
 
-    	var savings = totalMiles * offloadPercent/100 * irsReimbursement;
+    	savings = totalMiles * offloadPercent/100 * irsReimbursement;
     
     	console.log("This is Gas Savings");
     	console.log(savings);
@@ -139,7 +142,23 @@
     }
 
     function totalWageSavings() {
-
+		var turnoverRate = Number($('#input-offload-percentage').val());
+        var doorCount = Number($('#input-door-count').val());
+        var showingsToRent = Number($('#input-showings-to-rent').val());
+        var touringTime = ;
+        var tourCount = doorCount * turnoverRate * showingsToRent;
+        var daysReturned = ;
+        var conditionReportCount = Number($('#input-condition-reports').val());
+        var conditionOffload = Number($('#input-condition-reports-offload-percentage').val())/100;
+        var portfolioRadius = Number($('#input-portfolio-radius').val());
+        var portfolioRange = getAverageDistance();
+        var commuteTime = 3.5;
+        
+        
+        var wageSavings = (((turnoverRate * doorCount) * (showings / 2) * (portfolioRange  * portfolioRadius * 2) * (commuteTime) / 60) + touringTime) * daysReturned * tourCount + ((conditionReportCount * 2 * portfolioRadius * portfolioRange * commuteTime) / 60) + conditionReportCount) * conditionOffload * 20;
+        
+        return wageSavings;
+       
     }
 
     function totalSavings() {
@@ -218,9 +237,7 @@
     }
 
     function calculateTimeSavings() {
-	var timeSavings;
-	    
-	    
+
     }
 
     // calculate subcription cost
@@ -231,7 +248,7 @@
         console.log(doorCount);
 
         if (doorCount < 24) {
-            doorCount = 0;
+            doorCount = 0; 
         }
 
         var cost = ((50 * 12) + (doorCount * .3 * 20))
