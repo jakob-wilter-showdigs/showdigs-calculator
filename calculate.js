@@ -235,13 +235,23 @@
     function totalConditionReports() {
         // input-condition-reports
         var doorCount = Number($('#input-condition-reports-').val());
+        
+        return doorCount
 
     }
 
     function calculateTimeSavings() {
+    	var doorCount = Number($('#input-door-count').val());
 		var timeInCar = calculateTotalTimeInCar();
         var timeShowing = calculateTimeSpentTouring();
-        var showing
+        var showingOffload = Number($('#input-offload-percentage').val())/100;
+        var conditionOffload = Number($('#input-condition-reports-offload-percentage').val())/100;
+        var conditionReports = Number($('#input-condition-reports').val());
+        var timeInCarReports = conditionReports * doorCount;
+        
+        var timeSavings = (timeInCar + timeShowing) * showingOffload + (timeInCarReports + timeInCarReports) * conditionOffload;
+        
+        return timeSavings;
     }
 
     // calculate subcription cost
