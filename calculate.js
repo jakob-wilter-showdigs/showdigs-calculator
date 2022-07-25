@@ -65,7 +65,7 @@
 
     });
 
-    // on units leased input
+    // input retrieves on units leased input 
     $('#input-units-leased-per-year').on('input', function() {
         // update final outputs, Fieldwork Cost Calculations
         $('#text-gas-savings').text(formatNumber(totalGasSavings()));
